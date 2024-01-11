@@ -1,0 +1,61 @@
+.radio {
+	cursor: pointer;
+
+	span {
+		@include r-s16-h19;
+
+		position: relative;
+
+		padding-left: 28px;
+
+		&:before {
+			@include p_center-v;
+
+			box-sizing: border-box;
+
+			display: block;
+			width: 20px;
+			height: 20px;
+
+			content: "";
+			background-color: $white;
+
+			border: 1px solid $purple-400;
+			border-radius: 50%;
+			transition: 0.3s;
+		}
+	}
+
+	&:hover {
+		input:not(:checked):not(:disabled) + span {
+			&:before {
+				border-color: $purple-800;
+			}
+		}
+	}
+
+	input {
+		display: none;
+
+		&:checked + span {
+			&:before {
+				border: 6px solid $green-500;
+			}
+		}
+
+		&:disabled {
+			& + span {
+				&:before {
+					background-color: $silver-200;
+					border-color: $purple-400;
+				}
+			}
+
+			&:checked + span {
+				&:before {
+					border: 6px solid $purple-400;
+				}
+			}
+		}
+	}
+}
